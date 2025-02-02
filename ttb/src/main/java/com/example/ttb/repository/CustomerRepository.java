@@ -70,8 +70,6 @@ public class CustomerRepository {
         params.put("year_in_back", ZonedDateTimeToTimestamp(now.minusYears(yearInBack)).toString());
         params.put("now", ZonedDateTimeToTimestamp(now).toString());
 
-        //log.debug("retrieveCustomerTotalSales SQL: {}\nParam: {}", sql, params);
-
         return namedParameterJdbcTemplate.query(sql, params, new CustomerJoinWithSalesMapper());
     }
 
